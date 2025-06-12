@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials')
-        IMAGE_NAME = shravani3001/ci-cd-nodejs-jenkins
+        IMAGE_NAME = "shravani3001/ci-cd-nodejs-jenkins"
     }
 
     stages {
@@ -26,8 +26,8 @@ pipeline {
 
         stage ('Build Docker Image') {
             steps {
-                script {
-                    sh "build docker -t $IMAGE_NAME ."
+                dir('app') {
+                    sh "docker build -t $IMAGE_NAME ."
                 }
             }
         }
