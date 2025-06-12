@@ -44,19 +44,13 @@ ci-cd-nodejs-jenkins/
 
 SSH key pair generated using:
 
-
-```bash
 ssh-keygen -t rsa -b 4096 -f ci-cd-nodejs-key
-
 
 Provision an EC2 instance in a public subnet using:
 
-
-```bash
 terraform init
 terraform plan
 terraform apply
-
 
 Output includes the public IP of the EC2 instance.
 
@@ -64,15 +58,11 @@ Jenkins & Docker Installation (Run on EC2)
 
 SSH into the EC2 instance using:
 
-
-```bash
 ssh -i ./ci-cd-nodejs-key ubuntu@<public-ip>
 
 
 Run the following to install Docker and Jenkins:
 
-
-```bash
 # Update
 sudo apt update -y
 sudo apt upgrade -y
@@ -101,11 +91,8 @@ sudo systemctl start jenkins
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 
-
 Get the Jenkins initial admin password:
 
-
-```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
@@ -145,8 +132,6 @@ Push the project to GitHub
 
 Make sure the entire ci-cd-nodejs-jenkins/ folder (including both terraform/ and app/ directories) is pushed to a GitHub repository:
 
-
-```bash
 git init
 git remote add origin https://github.com/your-username/ci-cd-nodejs-jenkins.git
 git add .
