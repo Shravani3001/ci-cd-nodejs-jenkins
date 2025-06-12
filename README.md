@@ -6,8 +6,6 @@ This project demonstrates a complete CI/CD pipeline for a simple Node.js applica
 
 ##  Project Structure
 
-
-```bash
 ci-cd-nodejs-jenkins/
 │
 ├── terraform/
