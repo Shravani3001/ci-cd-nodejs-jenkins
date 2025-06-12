@@ -93,17 +93,34 @@ sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 ```
 
-### Get the Jenkins initial admin password:
-
-```bash
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-```
-
 ## Jenkins Configuration
 
 **Access Jenkins**:
 
 Open http://public-ip:8080 in your browser.
+
+### Unlock Jenkins
+
+After opening Jenkins in your browser at http://<public-ip>:8080, you will see a screen asking for the Administrator password.
+
+Run the following command on the instance
+
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+Copy the password and paste it into the Jenkins setup screen.
+
+### Create Admin User
+
+Once unlocked, Jenkins will prompt you to:
+
+Set up a new admin username and password
+
+Provide full name and email
+
+Then click Save and Continue
+
+This step ensures secure access and completes Jenkins’ initial setup.
 
 ### Install the following plugins:
 
@@ -130,6 +147,7 @@ Open http://public-ip:8080 in your browser.
 - Go to GitHub and create a new public repository named ci-cd-nodejs-jenkins
 
 **Push Your Project Folder to GitHub**
+
 In your terminal, navigate to the root of your project folder and run:
 
 ```bash
