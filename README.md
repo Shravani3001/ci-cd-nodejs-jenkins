@@ -44,7 +44,6 @@ ci-cd-nodejs-jenkins/
 
 **SSH key pair generated using**:
 
-```bash
 ssh-keygen -t rsa -b 4096 -f ci-cd-nodejs-key
 
 **Provision an EC2 instance in a public subnet using**:
