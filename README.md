@@ -58,7 +58,7 @@ Output includes the public IP of the EC2 instance.
 
 **SSH into the EC2 instance using**:
 
-ssh -i ./ci-cd-nodejs-key ubuntu@<public-ip>
+ssh -i ./ci-cd-nodejs-key ubuntu@public-ip
 
 ### Run the following to install Docker and Jenkins:
 
@@ -106,7 +106,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 **Access Jenkins**:
 
-Open http://<public-ip>:8080 in your browser.
+Open http://public-ip:8080 in your browser.
 
 ### Install the following plugins:
 
