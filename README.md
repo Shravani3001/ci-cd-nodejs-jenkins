@@ -6,7 +6,7 @@ This project demonstrates a complete CI/CD pipeline for a simple Node.js applica
 
 ##  Project Structure
 
-<pre><code>```text
+```
 ci-cd-nodejs-jenkins/
 │
 ├── terraform/
@@ -25,7 +25,7 @@ ci-cd-nodejs-jenkins/
 │
 ├── .gitignore
 └── README.md 
-```</code></pre>
+```
 
 
 ---
@@ -44,13 +44,17 @@ ci-cd-nodejs-jenkins/
 
 **SSH key pair generated using**:
 
+```bash
 ssh-keygen -t rsa -b 4096 -f ci-cd-nodejs-key
+```
 
 **Provision an EC2 instance in a public subnet using**:
 
+```bash
 - terraform init
 - terraform plan
 - terraform apply
+```
 
 Output includes the public IP of the EC2 instance.
 
@@ -58,49 +62,42 @@ Output includes the public IP of the EC2 instance.
 
 **SSH into the EC2 instance using**:
 
+```bash
 ssh -i ./ci-cd-nodejs-key ubuntu@public-ip
+```
 
 ### Run the following to install Docker and Jenkins:
 
-### Update
+```bash
+# Update
 sudo apt update -y
-
 sudo apt upgrade -y
-### Install Docker
+# Install Docker
 sudo apt install docker.io -y
-
 sudo systemctl enable docker
-
 sudo systemctl start docker
-
 sudo usermod -aG docker ubuntu
-
-### Install Java & Jenkins
+# Install Java & Jenkins
 sudo apt install fontconfig openjdk-21-jdk -y
-
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
-
 sudo apt update -y
-
 sudo apt install jenkins -y
-
 sudo systemctl enable jenkins
-
 sudo systemctl start jenkins
-
-### Jenkins Docker permission
+# Jenkins Docker permission
 sudo usermod -aG docker jenkins
-
 sudo systemctl restart jenkins
+```
 
 ### Get the Jenkins initial admin password:
 
+```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
 
 ## Jenkins Configuration
 
@@ -135,40 +132,31 @@ Open http://public-ip:8080 in your browser.
 **Push Your Project Folder to GitHub**
 In your terminal, navigate to the root of your project folder and run:
 
-- git init
-
-- git remote add origin https://github.com/your-username/ci-cd-nodejs-jenkins.git
-
-- git add .
-
-- git commit -m "Initial commit for CI/CD Node.js app with Jenkins and Terraform"
-
-- git push -u origin main
+```bash
+git init
+git remote add origin https://github.com/your-username/ci-cd-nodejs-jenkins.git
+git add .
+git commit -m "Initial commit for CI/CD Node.js app with Jenkins and Terraform"
+git push -u origin main
+```
 
 **Make sure to replace your-username with your actual GitHub username**
 
 ### Set up the Jenkins pipeline
 
-Go to Jenkins → New Item → Enter a name → Select Pipeline
-
-Under Pipeline script from SCM:
-
-SCM: Git
-
-Repository URL: your GitHub repo URL
-
-Script Path: app/Jenkinsfile
-
-Click Save, then Build Now
+- Go to Jenkins → New Item → Enter a name → Select Pipeline
+- Under Pipeline script from SCM:
+- SCM: Git
+- Repository URL: your GitHub repo URL
+- Script Path: app/Jenkinsfile
+- Click Save, then Build Now
 
 ## Outcome
-Jenkins pulls the Node.js app from GitHub.
 
-Builds a Docker image.
-
-Pushes the image to Docker Hub.
-
-You now have a full CI/CD flow with Infrastructure as Code.
+- Jenkins pulls the Node.js app from GitHub.
+- Builds a Docker image.
+- Pushes the image to Docker Hub.
+- You now have a full CI/CD flow with Infrastructure as Code.
 
 ### Author
 Shravani K
