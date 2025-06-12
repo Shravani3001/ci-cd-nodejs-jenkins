@@ -122,14 +122,18 @@ Open http://public-ip:8080 in your browser.
 ### Add DockerHub credentials:
 
 - Username: your DockerHub username
-
 - Password: DockerHub Personal Access Token
+- ID: dockerhub-credentials
 
 ## GitHub Integration & Pipeline Setup
 
 **Push the project to GitHub**
 
-Make sure the entire ci-cd-nodejs-jenkins/ folder (including both terraform/ and app/ directories) is pushed to a GitHub repository:
+- Create a Public GitHub Repository
+- Go to GitHub and create a new public repository named ci-cd-nodejs-jenkins
+
+**Push Your Project Folder to GitHub**
+In your terminal, navigate to the root of your project folder and run:
 
 - git init
 
@@ -141,6 +145,7 @@ Make sure the entire ci-cd-nodejs-jenkins/ folder (including both terraform/ and
 
 - git push -u origin main
 
+**Make sure to replace your-username with your actual GitHub username**
 
 ### Set up the Jenkins pipeline
 
