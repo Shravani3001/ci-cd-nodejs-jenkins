@@ -48,9 +48,9 @@ ssh-keygen -t rsa -b 4096 -f ci-cd-nodejs-key
 
 **Provision an EC2 instance in a public subnet using**:
 
-terraform init
-terraform plan
-terraform apply
+- terraform init
+- terraform plan
+- terraform apply
 
 Output includes the public IP of the EC2 instance.
 
@@ -62,38 +62,49 @@ ssh -i ./ci-cd-nodejs-key ubuntu@<public-ip>
 
 ### Run the following to install Docker and Jenkins:
 
-``
-# Update
+### Update
 sudo apt update -y
+
 sudo apt upgrade -y
-# Install Docker
+### Install Docker
 sudo apt install docker.io -y
+
 sudo systemctl enable docker
+
 sudo systemctl start docker
+
 sudo usermod -aG docker ubuntu
-# Install Java & Jenkins
+
+### Install Java & Jenkins
 sudo apt install fontconfig openjdk-21-jdk -y
+
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
+
 sudo apt update -y
+
 sudo apt install jenkins -y
+
 sudo systemctl enable jenkins
+
 sudo systemctl start jenkins
-# Jenkins Docker permission
+
+### Jenkins Docker permission
 sudo usermod -aG docker jenkins
+
 sudo systemctl restart jenkins
 
 ### Get the Jenkins initial admin password:
 
-``
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ## Jenkins Configuration
 
-Access Jenkins:
+**Access Jenkins**:
 
 Open http://<public-ip>:8080 in your browser.
 
@@ -111,20 +122,24 @@ Open http://<public-ip>:8080 in your browser.
 ### Add DockerHub credentials:
 
 - Username: your DockerHub username
+
 - Password: DockerHub Personal Access Token
 
 ## GitHub Integration & Pipeline Setup
 
-Push the project to GitHub
+**Push the project to GitHub**
 
 Make sure the entire ci-cd-nodejs-jenkins/ folder (including both terraform/ and app/ directories) is pushed to a GitHub repository:
 
-``
-git init
-git remote add origin https://github.com/your-username/ci-cd-nodejs-jenkins.git
-git add .
-git commit -m "Initial commit for CI/CD Node.js app with Jenkins and Terraform"
-git push -u origin main
+- git init
+
+- git remote add origin https://github.com/your-username/ci-cd-nodejs-jenkins.git
+
+- git add .
+
+- git commit -m "Initial commit for CI/CD Node.js app with Jenkins and Terraform"
+
+- git push -u origin main
 
 
 ### Set up the Jenkins pipeline
@@ -152,5 +167,7 @@ You now have a full CI/CD flow with Infrastructure as Code.
 
 ### Author
 Shravani K
+
 💼 LinkedIn: www.linkedin.com/in/shravani-k-25953828a
+
 🌱 DevOps Learner
