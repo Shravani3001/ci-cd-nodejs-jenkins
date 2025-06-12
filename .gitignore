@@ -1,0 +1,9 @@
+# Terraform files and folders
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# SSH keys
+terraform/ci-cd-nodejs-key
+terraform/ci-cd-nodejs-key.pub

@@ -1,0 +1,44 @@
+pipeline {
+    agent any 
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials')
+        IMAGE_NAME = shravani3001/ci-cd-nodejs-jenkins
+    }
+
+    stages {
+        stage ('Test GitHub Access') {
+            steps {
+                sh 'curl -I https://github.com || echo "GitHub not reachable"'
+            }
+        }
+
+        stage ('Clone Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Shravani3001/ci-cd-nodejs-jenkins.git'
+            }
+        }
+
+        stage ('Test Docker Access') {
+            steps {
+                sh 'docker version || echo "Docker not accessible from jenkins"'
+            }
+        }
+
+        stage ('Build Docker Image') {
+            steps {
+                script {
+                    sh "build docker -t $IMAGE_NAME ."
+                }
+            }
+        }
+
+        stage ('Push Docker Image') {
+            steps {
+                script {
+                    sh "echo $DOCKER_HUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB_CREDENTIALS_USR --password-stdin"
+                    sh "docker push $IMAGE_NAME"
+                }
+            }
+        }
+    }
+}
