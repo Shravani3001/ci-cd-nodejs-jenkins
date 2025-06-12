@@ -42,12 +42,12 @@ ci-cd-nodejs-jenkins/
 
 ## Infrastructure Setup with Terraform
 
-SSH key pair generated using:
+**SSH key pair generated using**:
 
 ```bash
 ssh-keygen -t rsa -b 4096 -f ci-cd-nodejs-key
 
-Provision an EC2 instance in a public subnet using:
+**Provision an EC2 instance in a public subnet using**:
 
 ```bash
 terraform init
@@ -58,7 +58,7 @@ Output includes the public IP of the EC2 instance.
 
 ### Jenkins & Docker Installation (Run on EC2)
 
-SSH into the EC2 instance using:
+**SSH into the EC2 instance using**:
 
 ```bash
 ssh -i ./ci-cd-nodejs-key ubuntu@<public-ip>
@@ -67,51 +67,33 @@ ssh -i ./ci-cd-nodejs-key ubuntu@<public-ip>
 ### Run the following to install Docker and Jenkins:
 
 ```bash
-
 # Update
 sudo apt update -y
-
 sudo apt upgrade -y
-
 # Install Docker
-
 sudo apt install docker.io -y
-
 sudo systemctl enable docker
-
 sudo systemctl start docker
-
 sudo usermod -aG docker ubuntu
-
 # Install Java & Jenkins
-
 sudo apt install fontconfig openjdk-21-jdk -y
-
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
-
 sudo apt update -y
-
 sudo apt install jenkins -y
-
 sudo systemctl enable jenkins
-
 sudo systemctl start jenkins
-
 # Jenkins Docker permission
-
 sudo usermod -aG docker jenkins
-
 sudo systemctl restart jenkins
 
 ### Get the Jenkins initial admin password:
 
+```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
 
 ## Jenkins Configuration
 
@@ -121,27 +103,19 @@ Open http://<public-ip>:8080 in your browser.
 
 ### Install the following plugins:
 
-Docker Pipeline
-
-Docker Commons
-
-GitHub Integration
-
-Blue Ocean
-
-Git Parameter Plugin
-
-NodeJS Plugin
-
-Pipeline: GitHub or Git
-
-Pipeline: Stage View
+- **Docker Pipeline**
+- **Docker Commons**
+- **GitHub Integration**
+- **Blue Ocean**
+- **Git Parameter Plugin**
+- **NodeJS Plugin**
+- **Pipeline: GitHub or Git**
+- **Pipeline: Stage View**
 
 ### Add DockerHub credentials:
 
-Username: your DockerHub username
-
-Password: DockerHub Personal Access Token
+- Username: your DockerHub username
+- Password: DockerHub Personal Access Token
 
 ## GitHub Integration & Pipeline Setup
 
