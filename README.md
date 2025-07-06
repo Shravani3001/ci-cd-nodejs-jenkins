@@ -186,6 +186,6 @@ git push -u origin main
 ### Author
 Shravani K
 
-💼 LinkedIn: www.linkedin.com/in/shravani-k-25953828a
+LinkedIn: www.linkedin.com/in/shravani-k-25953828a
 
-🌱 DevOps Learner
+DevOps Learner
