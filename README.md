@@ -42,6 +42,13 @@ ci-cd-nodejs-jenkins/
 
 ## Infrastructure Setup with Terraform
 
+**Clone the repo**:
+
+```bash
+git clone https://github.com/Shravani3001/ci-cd-nodejs-jenkins.git
+cd ci-cd-nodejs-jenkins
+```
+
 **SSH key pair generated using**:
 
 ```bash
