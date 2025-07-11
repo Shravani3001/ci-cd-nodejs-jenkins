@@ -84,17 +84,25 @@ sudo apt install docker.io -y
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker ubuntu
-# Install Java & Jenkins
-sudo apt install fontconfig openjdk-21-jdk -y
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
+# Update & Install Java & Jenkins
 sudo apt update -y
-sudo apt install jenkins -y
+sudo apt install -y curl gnupg2 fontconfig openjdk-17-jdk
+# Add Jenkins GPG key
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+# Add Jenkins repo
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+# Update APT again with Jenkins repo
+sudo apt update -y
+# Install Jenkins
+sudo apt install -y jenkins
+# Start & enable Jenkins
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+# Check status
+sudo systemctl status jenkins
 # Jenkins Docker permission
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
