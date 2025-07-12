@@ -79,30 +79,39 @@ ssh -i ./ci-cd-nodejs-key ubuntu@public-ip
 # Update
 sudo apt update -y
 sudo apt upgrade -y
+
 # Install Docker
 sudo apt install docker.io -y
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker ubuntu
+
 # Update & Install Java & Jenkins
 sudo apt update -y
 sudo apt install -y curl gnupg2 fontconfig openjdk-17-jdk
+
 # Add Jenkins GPG key
 curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
 # Add Jenkins repo
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
+
 # Update APT again with Jenkins repo
 sudo apt update -y
+
 # Install Jenkins
 sudo apt install -y jenkins
+
 # Start & enable Jenkins
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+
 # Check status
 sudo systemctl status jenkins
+
 # Jenkins Docker permission
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
@@ -147,6 +156,19 @@ This step ensures secure access and completes Jenkins’ initial setup.
 - **NodeJS Plugin**
 - **Pipeline: GitHub or Git**
 - **Pipeline: Stage View**
+
+## Create a Docker Hub Personal Access Token**
+
+- Log in to Docker Hub
+- Click on your profile icon Go to "Account Settings"
+- click on "Personal cccess tokens"
+- Now click on "Generate new token"
+- Provide "Access token description", such as jenkins-deploy-token
+- Select "Expiration date"
+- Set "Access permissions to "Read, Write, Delete"
+- Click "Generate"
+- Copy the generated token and save it securely
+- Use this token as the password when adding DockerHub credentials in Jenkins
 
 ### Add DockerHub credentials:
 
