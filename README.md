@@ -221,7 +221,7 @@ This step ensures secure access and completes Jenkins’ initial setup.
 - **Pipeline: GitHub or Git**
 - **Pipeline: Stage View**
 
-## Create a Docker Hub Personal Access Token**
+## Create a Docker Hub Personal Access Token
 
 - Log in to Docker Hub
 - Click on your profile icon Go to "Account Settings"
@@ -271,6 +271,12 @@ git push -u origin main
 - Script Path: app/Jenkinsfile
 - Click Save, then Build Now
 
+### Output
+
+<img width="1907" height="714" alt="Output" src="https://github.com/user-attachments/assets/d3c0643c-cfc9-47aa-a897-5397f40f6898" />
+
+---
+
 ## Outcome
 
 - Jenkins pulls the Node.js app from GitHub.
@@ -287,4 +293,5 @@ I love solving real-world problems with tools like Terraform, Ansible, Docker, J
 **Connect with me:**
 
 **LinkedIn:** www.linkedin.com/in/shravani3001
+
 **GitHub:** https://github.com/Shravani3001
