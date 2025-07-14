@@ -2,6 +2,80 @@
 
 This project demonstrates a complete CI/CD pipeline for a simple Node.js application using Jenkins and Docker. Infrastructure is provisioned using Terraform on AWS, and Jenkins automates the build and deployment process of a Dockerized app.
 
+## Project Overview
+
+This project demonstrates a complete CI/CD pipeline for a containerized Node.js application using Jenkins, Docker, and Terraform on AWS.
+
+- The infrastructure is provisioned using Terraform, which deploys an EC2 instance on AWS.
+
+- Jenkins is installed on this instance to automate the CI/CD workflow.
+
+- The Node.js app is Dockerized and automatically built, tested, and deployed via Jenkins.
+
+- The final image is pushed to Docker Hub after each successful build.
+
+This setup mimics a real-world DevOps workflow by combining Infrastructure as Code (IaC) with Continuous Integration and Continuous Deployment.
+
+---
+
+## Tools & Services Used
+
+- **Terraform** – Infrastructure as Code
+- **AWS EC2** – Host Jenkins and the app
+- **Jenkins** – CI/CD Automation
+- **Docker** – Containerize the Node.js app
+- **GitHub** – Source Code Management
+
+---
+
+##  How It Works
+
+**1. Terraform Setup**
+- Provisions an EC2 instance in a public subnet on AWS.
+- Generates an SSH key for secure access.
+
+**2. Manual Configuration on EC2**
+- Jenkins and Docker are installed on the EC2 instance.
+- Jenkins is set up to run Docker commands and pull code from GitHub.
+
+**3. Jenkins Configuration**
+- Configured with required plugins.
+- Connected to GitHub (SCM) and Docker Hub (via credentials).
+
+**4. Uses a Jenkinsfile to define CI/CD pipeline stages.**
+- Pipeline Stages (Defined in Jenkinsfile):
+- Clone code from GitHub
+- Build Docker image
+- Login to Docker Hub
+- Push image to Docker Hub
+  
+**5. Final Output**
+- Dockerized app image is built and stored on Docker Hub after every successful pipeline run.
+
+---
+
+## Architecture Diagram
+
+<img width="611" height="486" alt="Diagram" src="https://github.com/user-attachments/assets/6d456966-41ef-43f2-9a9a-8fdc71118df3" />
+
+---
+
+## Features
+
+✅ Infrastructure as Code using Terraform
+
+✅ Complete CI/CD automation using Jenkins
+
+✅ Dockerized deployment of a Node.js app
+
+✅ Push to Docker Hub on every build
+
+✅ Modular structure for scalability and clarity
+
+✅ Secure credential handling for Docker Hub and GitHub
+
+✅ Hands-on experience with real-world DevOps tools
+
 ---
 
 ##  Project Structure
@@ -27,16 +101,6 @@ ci-cd-nodejs-jenkins/
 └── README.md 
 ```
 
-
----
-
-## Tools & Services Used
-
-- **Terraform** – Infrastructure as Code
-- **AWS EC2** – Host Jenkins and the app
-- **Jenkins** – CI/CD Automation
-- **Docker** – Containerize the Node.js app
-- **GitHub** – Source Code Management
 
 ---
 
@@ -214,9 +278,13 @@ git push -u origin main
 - Pushes the image to Docker Hub.
 - You now have a full CI/CD flow with Infrastructure as Code.
 
-### Author
-Shravani K
+## Author
 
-LinkedIn: www.linkedin.com/in/shravani-k-25953828a
+I'm Shravani, a self-taught and project-driven DevOps engineer passionate about building scalable infrastructure and automating complex workflows.
 
-DevOps Learner
+I love solving real-world problems with tools like Terraform, Ansible, Docker, Jenkins, and AWS — and I’m always learning something new to sharpen my edge in DevOps.
+
+**Connect with me:**
+
+**LinkedIn:** www.linkedin.com/in/shravani3001
+**GitHub:** https://github.com/Shravani3001
