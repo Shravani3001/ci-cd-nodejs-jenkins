@@ -284,7 +284,7 @@ git push -u origin main
 - Pushes the image to Docker Hub.
 - You now have a full CI/CD flow with Infrastructure as Code.
 
-## Author
+## About Me
 
 I'm Shravani, a self-taught and project-driven DevOps engineer passionate about building scalable infrastructure and automating complex workflows.
 
